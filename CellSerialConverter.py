@@ -15,7 +15,6 @@ def hex_to_dec(hex_serial):
     if len(hex_serial) == 14:
         left = hex_serial[:8]
         right = hex_serial[8:]
-
         left_dec_int = int(left, 16)
         right_dec_int = int(right, 16)
 
@@ -46,7 +45,6 @@ def dec_to_hex(dec_serial):
     if len(dec_serial) == 18:
         left = int(dec_serial[:10])
         right = int(dec_serial[10:])
-
         hex_left = hex(left)
         hex_right = hex(right)
 
@@ -72,11 +70,10 @@ def calc_check_digit(meid):
     multiplier = 2
     sum_val = 0
     for c in reversed(meid):
-        current = str(int(c) * multiplier)
-        for c2 in current:
-            sum_val = sum_val + int(c2)
+        current = int(c) * multiplier
+        sum_val = sum_val + int(current / 10) + current % 10
         multiplier = 1 if multiplier == 2 else 2
-    check = sum_val % 10
+    check = 0 if sum_val % 10 == 0 else 10 - sum_val % 10
     return check
 
 
@@ -125,4 +122,4 @@ def translate_serial(serial):
 
 
 if __name__ == '__main__':
-    print(translate_serial("a10000009286F2"))
+    print(translate_serial("02206939217"))
