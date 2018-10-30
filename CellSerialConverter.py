@@ -8,6 +8,7 @@ Translation_Result = collections.namedtuple('Translation_Result',
 def hex_to_dec(hex_serial):
     """Convert a given hexadecimal serial number to decimal format.  Serial numbers must be
        valid hexadecimal values and be of length 14 or 18"""
+    hex_serial = hex_serial.upper()
     if re.match("^[A-Fa-f0-9]+$", hex_serial) is None:
         return ""
 
@@ -95,6 +96,7 @@ def translate_serial(serial):
     and applicable to the given serial number) and flags for successful conversion and indicating if
     the given serial has an imei.
     """
+    serial = serial.upper()
     source_serial = serial
     if len(serial) == 15:
         serial = serial[:14]
@@ -123,4 +125,4 @@ def translate_serial(serial):
 
 
 if __name__ == '__main__':
-    print(translate_serial("A10000009286F2"))
+    print(translate_serial("a10000009286F2"))
