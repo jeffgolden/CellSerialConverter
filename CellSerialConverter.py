@@ -122,4 +122,4 @@ def translate_serial(serial):
 
 
 if __name__ == '__main__':
-    print(translate_serial("02206939217"))
+    print(translate_serial("089393306502384536"))
