@@ -1,3 +1,4 @@
+# Converts Hex/Dec provided serial numbers to other formats
 import re
 import collections
 
